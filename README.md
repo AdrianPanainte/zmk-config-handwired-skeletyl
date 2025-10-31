@@ -8,6 +8,6 @@ SPI PINOUT
 
 CS          0.20
 SCK         0.08
-MISO        0.06
+MISO        0.17
 MOSI        0.17
-MOT         1.06
+MOT         0.06
