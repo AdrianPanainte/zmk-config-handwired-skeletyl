@@ -170,7 +170,7 @@
             bindings = <
     &none       &none       &none       &none       &none       AS(LBKT)        AS(N7)      AS(N8)      AS(N9)  AS(RBKT)
     &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none       AS(EQUAL)       AS(N4)      AS(N5)      AS(N6)  AS(SEMI)
-    &none       &none       &none       &none       &none       AS(GRAVE)       AS(N1)      AS(N2)      AS(N3)  AS(BSLH)
+    &studio_unlock       &none       &none       &none       &none       AS(GRAVE)       AS(N1)      AS(N2)      AS(N3)  AS(BSLH)
                             &none       &trans      &none       &as LPAR DOT    &as RPAR N0 AS(MINUS)
             >;
         };
