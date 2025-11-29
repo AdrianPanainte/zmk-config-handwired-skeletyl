@@ -177,10 +177,10 @@
 
        prgrm_layer {
            bindings = <
-    &none       &none       &none       &none       &none       &none   &none       &none       &none   &none
-    &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none       &none   AS(LBKT)    AS(RBKT)    &none   AS(SEMI)
-    &none       &none       &none       &none       &none       &none   &kp EXCL    &kp EQUAL   &none   &kp FSLH
-                            &trans      &none       &none       &kp LPAR    &kp RPAR    &kp UNDER
+    &none       &none       &none       &none       &none       &mkp LCLK        &mkp MCLK       &mkp RCLK         &mkp MB3         &mkp MB4 
+    &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none       &msc SCRL_LEFT   &msc SCRL_UP    &msc SCRL_DOWN    &msc SCRL_RIGHT  &none
+    &none       &none       &none       &none       &none       &none            &kp EXCL        &kp EQUAL         &none            &kp FSLH
+                            &trans      &none       &none       &kp LPAR         &kp RPAR        &kp UNDER
             >;
         };
 
