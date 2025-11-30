@@ -1,3 +1,6 @@
+config SHIELD_SKELETYL_CENTRAL
+    def_bool $(shields_list_contains,skeletyl_central)
+
 config SHIELD_SKELETYL_LEFT
     def_bool $(shields_list_contains,skeletyl_left)
 
