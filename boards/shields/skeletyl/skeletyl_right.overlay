@@ -57,7 +57,6 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        snipe-layers = <1>;
         cpi = <3000>;
         force-awake;
         evt-type = <INPUT_EV_REL>;
