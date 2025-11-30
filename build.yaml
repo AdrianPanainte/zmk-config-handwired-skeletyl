@@ -15,9 +15,13 @@
 include:
   - board: nice_nano_v2
     shield: skeletyl_left
+    make-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
   - board: nice_nano_v2
     shield: skeletyl_right
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    snippet: studio-rpc-usb-uart
+    make-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+  - board: nice_nano_v2
+    shield: settings_reset
   - board: seeeduino_xiao_ble
     shield: skeletyl_central dongle_display
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+    snippet: studio-rpc-usb-uart
