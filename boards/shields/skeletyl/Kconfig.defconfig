@@ -6,7 +6,7 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-config ZMK_SPLIT
+config ZMK_USB
     default y
 
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
@@ -19,4 +19,14 @@ config BT_MAX_CONN
 # Set this to the same number as BT_MAX_CONN
 config BT_MAX_PAIRED
     default 6
+endif
+
+if SHIELD_SKELETYL_LEFT || SHIELD_SKELETYL_RIGHT || SHIELD_SKELETYL_CENTRAL
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_BLE
+    default y
+
 endif
