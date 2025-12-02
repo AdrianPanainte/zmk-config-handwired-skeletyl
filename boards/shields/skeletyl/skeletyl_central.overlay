@@ -1,8 +1,3 @@
-
-&physical_layout0 {
-    transform = <&default_transform>;
-};
-
 / {
     chosen {
         zmk,kscan = &mock_kscan;
