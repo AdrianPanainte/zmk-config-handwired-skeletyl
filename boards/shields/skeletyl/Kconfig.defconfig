@@ -9,6 +9,9 @@ config ZMK_SPLIT_ROLE_CENTRAL
 config ZMK_USB
     default y
 
+config ZMK_MOUSE
+    default y
+
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
     default 2
 
