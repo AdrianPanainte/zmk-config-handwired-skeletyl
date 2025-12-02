@@ -1,4 +1,4 @@
-#import "skeletyl.dtsi"
+#include "skeletyl.dtsi"
 
 &physical_layout0 {
     transform = <&default_transform>;
