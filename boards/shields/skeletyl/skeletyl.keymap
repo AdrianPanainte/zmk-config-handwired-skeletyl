@@ -13,6 +13,11 @@
 #define MED     5
 
 / {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_split>;
+    };
+    
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";

@@ -1,4 +1,5 @@
 #include "skeletyl.dtsi"
+#include "skeletyl_3610.dtsi"
 
 // if you're using the Amoeba PCBs, you may want to put the GPIO_PULL_DOWN in the
 // col-gpios instead
@@ -17,4 +18,8 @@
         , <&pro_micro 5 (GPIO_ACTIVE_HIGH)> // col3
         , <&pro_micro 4 (GPIO_ACTIVE_HIGH)> // col4
         ;
+};
+
+&trackball_split {
+	status = "disabled";
 };
