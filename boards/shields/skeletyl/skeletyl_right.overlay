@@ -36,3 +36,13 @@
 	device = <&trackball>;
 };
 
+/{
+    esb_split {
+        compatible = "zmk,esb-split";
+        // These are arbitrary default addresses. In end user products
+        // different addresses should be used for each set of devices.
+        base-addr-0 = <0xE9 0xE9 0xE9 0xE9>;
+        base-addr-1 = <0xC4 0xC4 0xC4 0xC4>;
+        addr-prefix = <0xE7 0xC2 0xC3 0xC4 0xC5 0xC6 0xC7 0xC8>;
+    };
+};
