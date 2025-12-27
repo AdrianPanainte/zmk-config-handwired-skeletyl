@@ -10,13 +10,11 @@
 // Modified keymap based on personal experience, with some improvements based on Miryoku layout.
 
 #define QWERTY  0
-#define COLDH   1
-#define NAV     2
-#define NUM     3
-#define PRGRM   4
-#define FUN     5
-#define ILLUST  6
-#define GAME    7
+#define NAV     1
+#define NUM     2
+#define PRGRM   3
+#define FUN     4
+#define GAME    5
 
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
 
@@ -27,7 +25,7 @@
 
         scroll {
             layers = <NUM>;
-            input-processors = <&zip_xy_scaler 10 10>, <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>;
         };
     };
 
@@ -58,6 +56,20 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        scroll_lt: scroll_lt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SCROLL_LT";
+
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+
+            bindings = <
+                &cpi_set 600    /* hold press */
+                &kp SPACE       /* tap */
+                &mo NUM         /* hold */
+                &cpi_set 3000   /* hold release */
+            >;
         };
     };
 
@@ -104,20 +116,6 @@
             bindings = <&kp C_MUTE>;
         };
 
-        // combo for toggling illust layer
-        combo_tg_illust {
-            timeout-ms = <50>;
-            key-positions = <21 22 23>;
-            bindings = <&tog ILLUST>;
-        };
-
-        // Combo for toggling the Colemak layout
-        combo_tg_colemak {
-            timeout-ms = <50>;
-            key-positions = <6 7 8>;
-            bindings = <&tog COLDH>;
-        };
-
         // Combo for toggling minimal game layout
         combo_tg_game {
             timeout-ms = <50>;
@@ -158,16 +156,7 @@
     &kp Q       &kp W       &kp E       &kp R           &kp T           &kp Y       &kp U       &kp I       &kp O           &kp P
     &hmp LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F     &kp G           &kp H       &hm LSHFT J &hm LCTRL K  &hm LALT L      &hmp LGUI SQT
     &kp Z       &hm RALT X  &kp C       &kp V           &kp B           &kp N       &kp M       &kp COMMA   &hm RALT DOT    &kp FSLH
-                            &kp DEL     &lt NUM SPACE   &lt PRGRM TAB     &kp BSPC    &lt NAV RET &lt FUN ESC
-            >;
-        };
-
-        colemak_dh {
-            bindings = <
-    &kp Q       &kp W       &kp F       &kp P           &kp B           &kp J       &kp L       &kp U       &kp Y           &kp SQT
-    &hmp LGUI A &hm LALT R  &hm LCTRL S &hm LSHFT T     &kp G           &kp M       &hm LSHFT N &hm LCTRL E &hm LALT I      &hmp LGUI O
-    &kp Z       &hm RALT X  &kp C       &kp D           &kp V           &kp K       &kp H       &kp COMMA   &hm RALT DOT    &kp FSLH
-                            &kp DEL     &lt NUM SPACE   &lt PRGRM TAB     &kp BSPC    &lt NAV RET &lt FUN ESC
+                            &kp DEL     &scroll_lt   &lt PRGRM TAB     &kp BSPC    &lt NAV RET &lt FUN ESC
             >;
         };
 
@@ -204,15 +193,6 @@
     &kp F11 &kp F4  &kp F5      &kp F6      &kp SLCK        &none   &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
     &kp F10 &kp F1  &kp F2      &kp F3      &kp PAUSE_BREAK &none   &none       &none       &none       &none
                     &kp K_APP   &kp SPACE   &kp TAB         &none   &none       &trans
-            >;
-        };
-
-        illust_fun_layer {
-            bindings = <
-    &kp F12 &kp F7  &kp F8          &kp F9          &kp LBKT        &none   &none   &none   &none   &none
-    &kp F11 &kp F4  &kp F5          &kp F6          &kp RBKT        &none   &none   &none   &none   &none
-    &kp F10 &kp F1  &kp F2          &kp F3          &kp BSLH        &none   &none   &none   &none   &none
-                    &sk LC(LSHFT)   &mt LSHFT LC(Z) &mt LCTRL LC(Y) &none   &none   &none
             >;
         };
 
