@@ -57,20 +57,6 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        scroll_lt: scroll_lt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SCROLL_LT";
-
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-
-            bindings = <
-                &cpi_set 600    /* hold press */
-                &kp SPACE       /* tap */
-                &mo NUM         /* hold */
-                &cpi_set 3000   /* hold release */
-            >;
-        };
     };
 
     combos {
@@ -156,7 +142,7 @@
     &kp Q       &kp W       &kp E       &kp R           &kp T           &kp Y       &kp U       &kp I       &kp O           &kp P
     &hmp LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F     &kp G           &kp H       &hm LSHFT J &hm LCTRL K  &hm LALT L      &hmp LGUI SQT
     &kp Z       &hm RALT X  &kp C       &kp V           &kp B           &kp N       &kp M       &kp COMMA   &hm RALT DOT    &kp FSLH
-                            &kp DEL     &scroll_lt   &lt PRGRM TAB     &kp BSPC    &lt NAV RET &lt FUN ESC
+                            &kp DEL     &lt NUM SPACE   &lt PRGRM TAB     &kp BSPC    &lt NAV RET &lt FUN ESC
             >;
         };
 
