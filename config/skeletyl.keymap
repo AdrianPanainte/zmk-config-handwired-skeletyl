@@ -49,9 +49,11 @@
         device = <&trackball_split>;
         input-processors = <&zip_temp_layer MOUSE 1000>;
 
+        // Ball counts map 1:1 to wheel notches, far too fast at 3000 CPI: scale down.
+        // Raise the 16 to scroll slower, lower it to scroll faster.
         scroll {
             layers = <NAV>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 16>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>;
         };
     };
 
