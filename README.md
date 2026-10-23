@@ -3,11 +3,19 @@ This repository contains custom ZMK configuration for handwired [Skeletyl](https
 
 Do note that the keymap file under `boards/shield/skeletyl/` is the *default* keymap, while the one under `config/` is the one that will be compiled if it exists. It is heavily advised to leave the default keymap as it is and make your custom changes in the files under the `config/` directory.
 
+### Setup
+- `skeletyl_central` + `dongle_display`: Seeeduino XIAO BLE dongle with an SH1106 OLED. It is the split central (BLE split), with ZMK Studio over USB.
+- `skeletyl_left` / `skeletyl_right`: nice!nano v2 peripherals. The right half has a PMW3610 trackball.
+- ZMK and every module are pinned to ZMK v0.3 compatible revisions in `config/west.yml`, and the build workflow is pinned to the matching `v0.3` workflow.
+- `config/skeletyl.keymap` mirrors the [Klein](https://github.com/AdrianPanainte/Klein-zmk) keymap; see the header comment for the differences.
 
-SPI PINOUT
+Kconfig: ZMK v0.3 loads `config/skeletyl.conf` (shared, applied last) and `boards/shields/skeletyl/<shield>.conf`. A `skeletyl.conf` inside the shield folder would be ignored.
 
-CS          0.20
-SCK         0.08
-MISO        0.17
-MOSI        0.17
-MOT         0.06
+### SPI pinout (trackball)
+
+| Signal    | Pin  |
+|-----------|------|
+| CS        | 0.20 |
+| SCK       | 0.08 |
+| MISO/MOSI | 0.17 (3-wire SPI) |
+| MOT       | 0.06 |
