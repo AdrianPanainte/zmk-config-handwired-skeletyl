@@ -24,7 +24,7 @@ struct layer_status_state {
 };
 
 static void set_layer_symbol(lv_obj_t *label, struct layer_status_state state) {
-    if (state.label == NULL) {
+    if (state.label == NULL || state.label[0] == '\0') { // unnamed layer: show its index
         char text[7] = {};
 
         sprintf(text, "%i", state.index);

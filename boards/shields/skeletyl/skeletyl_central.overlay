@@ -27,6 +27,8 @@
 
 &xiao_i2c {
     status = "okay";
+    // 400 kHz (the default is 100 kHz): ~4x faster screen updates, smoother animation
+    clock-frequency = <400000>;
 
     oled: ssd1306@3c {
         compatible = "sinowealth,sh1106";

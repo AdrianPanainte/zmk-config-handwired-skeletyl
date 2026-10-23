@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include <zephyr/kernel.h>
 
 #include <zephyr/logging/log.h>
@@ -23,7 +25,7 @@ struct wpm_status_state
 
 static struct wpm_status_state get_state(const zmk_event_t *_eh)
 {
-    const struct zmk_wpm_state_changed *ev = as_zmk_wpm_state_changed(_eh);
+    const struct zmk_wpm_state_changed *ev = _eh != NULL ? as_zmk_wpm_state_changed(_eh) : NULL;
     uint8_t index = zmk_keymap_highest_layer_active();
 
     return (struct wpm_status_state){
@@ -32,9 +34,39 @@ static struct wpm_status_state get_state(const zmk_event_t *_eh)
     };
 }
 
+// Exact match against the comma separated CONFIG_ZMK_DONGLE_DISPLAY_WPM_DISABLED_LAYERS.
+// (A plain strstr() matched every unnamed layer, since "" is a substring of anything.)
+static bool layer_is_wpm_disabled(const char *layer)
+{
+    if (layer == NULL || layer[0] == '\0') {
+        return false;
+    }
+
+    const char *list = CONFIG_ZMK_DONGLE_DISPLAY_WPM_DISABLED_LAYERS;
+    size_t len = strlen(layer);
+    while (*list != '\0') {
+        while (*list == ' ' || *list == ',') {
+            list++;
+        }
+        const char *end = list;
+        while (*end != '\0' && *end != ',') {
+            end++;
+        }
+        const char *tail = end;
+        while (tail > list && tail[-1] == ' ') {
+            tail--;
+        }
+        if ((size_t)(tail - list) == len && strncmp(list, layer, len) == 0) {
+            return true;
+        }
+        list = end;
+    }
+    return false;
+}
+
 static void set_wpm(struct zmk_widget_wpm_status *widget, struct wpm_status_state state)
 {
-    if(strstr(CONFIG_ZMK_DONGLE_DISPLAY_WPM_DISABLED_LAYERS, state.layer) != NULL) {
+    if (layer_is_wpm_disabled(state.layer)) {
         lv_label_set_text(widget->wpm_label, "-");
         return;
     }
